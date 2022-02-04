@@ -52,23 +52,22 @@ discart.addEventListener('click',function(){
 
  
 
-const acc_btns = document.querySelectorAll('.acc_header');
-const acc_contents = document.querySelectorAll('.acc_body');
+const acc_btns = document.querySelectorAll('.accordion-head');
+const acc_contents = document.querySelectorAll('.accordion-body');
 
-acc_btns.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      acc_contents.forEach((acc) => {
-        if (
-          e.target.nextElementSibling !== acc &&
-          acc.classList.contains("active")
-        ) {
-          acc.classList.remove("active");
-          acc_btns.forEach((btn) => btn.classList.remove("active"));
+
+acc_btns.forEach( btn =>{
+  btn.addEventListener('click', function(){
+    if( btn.classList.contains('active')){
+      btn.classList.remove('active');
+    }else{
+      acc_btns.forEach( btn =>{
+        if( btn.classList.contains('active')){
+          btn.classList.remove('active');
         }
       });
-  
-      const panel = btn.nextElementSibling;
-      panel.classList.toggle("active");
-      btn.classList.toggle("active");
-    });
+
+      btn.classList.add('active');
+    }
   });
+});
